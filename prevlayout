@@ -1,0 +1,13 @@
+#!/bin/sh
+
+LAYOUTS=($(xkb-switch -l))
+
+declare -A hashtable
+
+hashtable["us"]="0" 
+hashtable["ru"]="1" 
+hashtable["ua"]="2" 
+
+count=${hashtable[$(xkb-switch)]}
+
+xkb-switch -s ${LAYOUTS[count-1]}

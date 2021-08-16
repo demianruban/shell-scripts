@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# this pipeline must print description of each installed package in order.
+pacman -Q | grep -o '^[[:graph:]]*[[:space:]]' | dmenu -l 30 | xargs pacman -Qi | head -n3 | tail -n1 | egrep -o ': .*'

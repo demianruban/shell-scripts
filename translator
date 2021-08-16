@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "<-Type text here" | dmenu | xargs -I {} trans -identify -b :ru "{}" | dmenu > /dev/null

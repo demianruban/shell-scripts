@@ -1,0 +1,10 @@
+#!/bin/sh
+
+clear
+read -p "Do you want to: \"pacman -Syu\"? [y|n] "
+
+case "$REPLY" in
+	"y")	sudo pacman -Syu
+		exit
+		;;
+esac
