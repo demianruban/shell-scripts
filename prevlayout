@@ -1,13 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
-LAYOUTS=($(xkb-switch -l))
+# array of language codes
+layouts=( $(xkb-switch -l) )
 
-declare -A hashtable
+# represents index of current layout
+current=1
 
-hashtable["us"]="0" 
-hashtable["ru"]="1" 
-hashtable["ua"]="2" 
+for i in "${layouts[@]}"
+do
+	if [ "$i" = "$(xkb-switch)" ]
+	then
+		break
+	fi
+	((++current))
+done
 
-count=${hashtable[$(xkb-switch)]}
-
-xkb-switch -s ${LAYOUTS[count-1]}
+xkb-switch -s ${layouts[current-2]}
+unset current
+unset layouts
